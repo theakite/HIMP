@@ -1,0 +1,43 @@
+RELEASE CHECKLIST
+written by Steve Karg (using a similar doc by Kim Gräsman as a guide)
+
+1. Verify that the build is clean.
+  * Test code with clean directory.
+  * Get a clean build (no warnings or errors).
+  * The program must be functional (it works).
+2. Update version number in version.c and rebuild. Is it still functional?
+3. Clean up the object files and binaries, and make the source code look 
+the same to prepare for tar.
+  $ make clean
+  $ indent -kr -nut -nlp *.c *.h
+4. Commit changes to CVS. Always describe why something is changed in the 
+   annotation.  This will automatically go into the changelog.
+  $ cvs update
+  $ cvs commit
+5. Set a CVS tag on the "bacnet" module called "bacnet4linux-0-0-0"
+  $ cvs tag "bacnet4linux-0-0-0"
+6. tar and gzip the clean directory from one directory up.
+  $ tar -cvvzf bacnet4linux-0.0.0.tgz bacnet/
+7. Put the new release up on SourceForge
+  * Connect to ftp://upload.sourceforge.net/ as anonymous
+  * Upload the tarball to the incoming directory.
+  * Go to http://sourceforge.net/projects/bacnet4linux
+  * Admin -> File Releases
+  * Add Release
+    ** Release Name "bacnet4linux-0.0.0" 
+    ** Set status to Hidden (for now).
+    ** Create a change log (use cvs2cl.pl tool from cvs)
+    ** [Submit/Refresh]
+    ** Attach the tarball that was uploaded (should be listed)
+    ** [Add Files and/or Refresh View]
+    ** Set file metadata
+         Processor: i386
+         Release Date: Today's date
+         File Type: Source .gz
+    ** [Update/Refresh]
+    ** Activate Release
+         Set status to Active
+         [Submit/Refresh]
+    ** [Send Notice]
+8. Update the website (if necessary)
+9. Add release notes under What's New on SourceForge

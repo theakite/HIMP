@@ -1,0 +1,38 @@
+-- INSTALL for bacnet4linux - a BACnet Protocol stack for Linux
+-- Copyright (c) 2000-2002 by Greg Holloway, hollowaygm@telus.net
+--
+--  This library is free software; you can redistribute it and/or modify
+--  it under the terms of the GNU Lesser General Public License as 
+--  published by the Free Software Foundation; either version 2.1 
+--  of the License, or (at your option) any later version.
+--
+--  This library is distributed in the hope that it will be useful,
+--  but WITHOUT ANY WARRANTY; without even the implied warranty of
+--  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+--  GNU Lesser General Public License for more details.
+--
+--  You should have received a copy of the GNU Lesser General Public 
+--  License along with this program; if not, write to:
+--  Free Software Foundation, Inc.
+--  59 Temple Place, Suite 330
+--  Boston, MA  02111-1307  USA
+--
+-- (See the included file COPYING / LGPL-2.1)
+-- 
+
+Compilation and Installation:
+--------------------------------
+
+The simplest way to compile this package is:
+
+Type `make' to build the executable (bacnet4linux).
+
+$ make clean all
+
+Run the package to get the optional command line parameters:
+$ ./bacnet4linux ?
+
+Run the package with your parameters:
+
+$ ./bacnet4linux -d123
+
