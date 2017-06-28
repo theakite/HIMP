@@ -1,0 +1,46 @@
+<?xml version="1.0" standalone='yes'?>
+<parameterFile>
+
+    <fileUpdate> <!-- Indicates if the file has been updated since the last time it was read by HIMP -->
+        True
+    </fileUpdate>
+
+    <programParameters>
+        <!--  This will have the information about the different parameters of the program -->
+    </programParameters>
+
+    <installedModules>
+        <!-- This will have the information about the different modules installed on the system -->
+        <crowdsourcingModule id="crowd1"> <!-- each module will have an id, just in case there are multiple modules of the same type installed -->
+            
+            <configuration>
+                <!-- This will have the information about the configuration of the module -->
+            </configuration>
+            
+            <processingRules>
+                <!-- This will have the special processing rules described by the user in the web interface -->
+            </processingRules>
+
+        </crowdsourcingModule>
+
+        <wifiModule id="wifi1"> <!-- each module will have an id, just in case there are multiple modules of the same type installed -->
+
+            <configuration>
+                <!-- This will have the information about the configuration of the module -->
+            </configuration>
+            
+            <processingRules>
+                <!-- This will have the special processing rules described by the user in the web interface -->
+            </processingRules>
+
+        </wifiModule>
+
+    </installedModules>
+
+    <bacnetInfo>
+        <!-- This will have information about the BacNet connection -->
+        <connectionType>Ethernet <!-- or RS-485 --></connectionType> <!-- specifies which version of BacNet is used -->
+        
+    </bacnetInfo>
+
+</parameterFile>
