@@ -6,10 +6,15 @@
         <?php 
 
             if(file_exists('parameter.xml')) {
-                echo "we got here 1";
                 $xml = simplexml_load_file('parameter.xml');
-                echo "we got here 2";
-                echo $xml->fileUpdate;
+                foreach ($xml->children() as $child) {
+                    foreach ($child->attributes() as $type => $data) {
+                        if ($type == "display" && $data != "false") {
+                            echo $data;
+                            echo " ";
+                        }
+                    }
+                }
             }
 
             else {
