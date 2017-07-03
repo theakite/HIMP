@@ -2,7 +2,7 @@
 <parameterFile>
 
     <fileUpdate display="false"> <!-- Indicates if the file has been updated since the last time it was read by HIMP -->
-        True
+        False
     </fileUpdate>
 
     <programParameters display="Program Parameters">

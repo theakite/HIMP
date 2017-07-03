@@ -6,15 +6,15 @@
         <?php 
 
             if(file_exists('parameter.xml')) {
-                $xml = simplexml_load_file('parameter.xml');
-                foreach ($xml->children() as $child) {
-                    foreach ($child->attributes() as $type => $data) {
-                        if ($type == "display" && $data != "false") {
-                            echo $data;
-                            echo " ";
-                        }
-                    }
+                $doc = new DOMDocument();
+                $doc->load(parameter.xml);
+                $listONodes = new DOMNodeList;
+                $listONodes=$doc->childNodes;
+                foreach ($listONodes->item as $element) {
+                    print "<p> $element->textContent </p>";
                 }
+                $doc->saveXML();
+                echo "Here";
             }
 
             else {
