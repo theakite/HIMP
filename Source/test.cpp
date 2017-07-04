@@ -31,6 +31,8 @@ int main() {
 
         return 0;
     }
+
+    //TODO: cycle thorough next-generation nodes and store in an array
     
     return 0;
 }
