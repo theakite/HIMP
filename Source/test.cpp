@@ -33,6 +33,18 @@ int main() {
     }
 
     //TODO: cycle thorough next-generation nodes and store in an array
-    
+    xml_node<> *firstChild = topNode->first_node(0);
+    if (firstChild != 0) { //There's a node
+        //count the nodes
+        cout << "Child Node Found: " << firstChild << endl;
+    }
+
+    else { //There isn't a child node. This is unexpected
+        clog << "No Child Node Found" << endl;
+        cerr << "No Child Node Found" << endl;
+    }
+
+
+
     return 0;
 }
