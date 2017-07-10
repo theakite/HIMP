@@ -1,17 +1,17 @@
-#include "../Libraries/rapidxml-1.13/rapidxml.hpp"
-#include "../Libraries/rapidxml-1.13/rapidxml_utils.hpp"
-
-#include <iostream>
-#include <cstring>
+#include "./HIMP.hpp"
+#include "./ConfigFile.hpp"
 
 using namespace rapidxml;
 using namespace std;
+using namespace Configuration;
 
 int countChildren(xml_node<> parentNode);
 
 int main() {
 
-    file<> xmlFile("test.xml"); //TODO: needs to have test.xml as a variable in a config file
+    ConfigFile config = ConfigFile("./HIMP.config");
+
+    file<> xmlFile(config.getXmlPath().c_str());//OPTI: maybe start as a cstring instead of having to convert to it?
     clog << "XML Loaded" << endl;
 
     xml_document<> doc;
@@ -21,9 +21,9 @@ int main() {
     xml_node<> *topNode=doc.first_node(0);
     int topChildrenCount = count_children(topNode);
 
-    //TODO: have something for version checking
+    //TODO: have something for version checking ** handle in config file
     
-    if (!strcmp(topNode->name(), "parameterFile")) { //TODO: needs to have "parameterFile" as var in config
+    if (!strcmp(topNode->name(), config.getTopNodeTitle().c_str())) { //OPTI: cstring conversion can't be the best way to do this
         clog << "Top Node Loaded at " << topNode << " and has " << topChildrenCount << " children" << endl;
     }
 
@@ -34,13 +34,15 @@ int main() {
         return 0; //TODO: handle this quit more gracefully
     }
 
-    xml_node<> topChildren[topChildrenCount] = new xml_node<>[];
+    xml_node<> *topChildren[topChildrenCount];
     topChildren[0] = topNode->first_node(0);
     for (int i = 1; i < topChildrenCount; i++) {
-        topChildren[i] = topChildren[i-1].next_sibling(0);
+        topChildren[i] = topChildren[i-1]->next_sibling(0);
     }
 
-    cout << "we did it" << endl;
+    for (int i = 0; i < topChildrenCount; i++) {
+        cout << "Child " << i << " is " << topChildren[i]->name() << endl;
+    }
 
     return 0;
 }

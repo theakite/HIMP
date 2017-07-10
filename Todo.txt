@@ -1,0 +1,9 @@
+Things to do:
+* fully traverse xml file --> What is the purpose of traversing the XML file in C++?
+				* be able to respond to all user input
+				* lots of magic words can move to the config file
+
+* figure out what the acceptable delay is for using the php parser
+* look at different RS-485 adapters (and how to talk to them)
+* have multiple instances (1 per version) of a config file consolidated that main program draws from
+
