@@ -1,8 +1,12 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
-    <head></head>
+    <head>
+        <title>HIMP Editor</title>
+    </head>
 
     <body>
+    <h1>HIMP Editior</h1>
+    <h2>Properties</h2>
         <?php 
 
             if(file_exists('./parameter.xml')) {
@@ -12,34 +16,21 @@
                 $topNode = new DOMNode;
                 $topNode = $doc->childNodes->item(0); //assumes that we only care about the first child (there shouldn't ever be any other top-level children)
 
-                
-                /*foreach ($topNode as $qNode) {
-                    echo $qNode->getAttribute('display');
-                }*/
-
+                removeWhitespace($topNode);
                 assembleChildren($topNode);
 
-                /*$listONodes = new DOMNodeList;
-                $listONodes=$doc->childNodes;
-                foreach ($listONodes as $element) {
-                    print "<p> $element->localName </p><br/>";
-                }*/
-
-                
-
                 //$doc->saveXML();
-                echo "End of Main";
+                echo "End of File";
             }
 
             else {
-                print "<h1>Unable to find XML Document</h1>";
+                print "<p>Unable to find XML Document</p>";
             }
 
-
             function assembleChildren($node) {
-                removeWhitespace($node);//gets rid of extra nodes that come from the formatting whitespace
-                //print '<ul>';//open unordered list tag
-                if ($node->hasChildNodes()) {
+                //removeWhitespace($node);//gets rid of extra nodes that come from the formatting whitespace
+                if ($node->hasChildNodes() && $node->nodeType == 1) {
+                    removeWhitespace($node);
                     print '<ul>'; //if there are children, there will list items
                     foreach($node->childNodes as $childNode) {
                         $displayAtrb = $childNode->getAttribute('display');
@@ -48,22 +39,26 @@
                             print $displayAtrb; //we want to display it
                         }
 
-                        removeWhitespace($childNode);
+                        //removeWhitespace($childNode);
 
                         if($childNode->hasChildNodes()) {//if its children have children, call again
+                            //removeWhitespace($childNode);
                             assembleChildren($childNode);
                         }
 
                         else {//children don't have children
+                            echo '00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000';
                             print '</li>';
                         }
                     }
                     print '</ul>';
 
                 }
-                else { //node has no children
+                else if($node->nodeType == 1) { //node has no children
                     if($node->getAttribute('display') != '__false') {
-                        print '</li>';
+                        print '<span contenteditable = "true">';
+                        print $node->textContent;
+                        print '</span></li>';
                     }
                 }
                 return;
