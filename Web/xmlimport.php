@@ -28,15 +28,43 @@
             }
 
             function assembleChildren($node) {
+                echo "<h3>Assemble children for: ";
+                echo $node->nodeName;
+                echo "</h3>";
                 //removeWhitespace($node);//gets rid of extra nodes that come from the formatting whitespace
-                if ($node->hasChildNodes() && $node->nodeType == 1) {
-                    removeWhitespace($node);
-                    print '<ul>'; //if there are children, there will list items
+                removeComments($node);
+                if ((int)$node->nodeType == 1 && $node->hasChildNodes() == true) {
+                    //removeWhitespace($node);
+                    print '<ul>'; //if there are children, there will list items;
                     foreach($node->childNodes as $childNode) {
-                        $displayAtrb = $childNode->getAttribute('display');
-                        if ($displayAtrb != '__false') {
-                            print '<li>';
-                            print $displayAtrb; //we want to display it
+                        echo "<h3>";
+                        if ((int)($childNode->nodeType == 1)) {
+                            echo "first condition is true ";
+                            if($childNode->hasAttribute("display") == true) {
+                                echo "second condition is true";
+                            }
+                            else {
+                                echo "second condition is false";
+                            }
+                        }
+                        else {
+                            echo "first condition is false";
+                        }
+                        echo "</h3>";
+                        echo "<h3>";
+                        
+                        echo "</h3>";
+                        if ((int)($childNode->nodetype == 1) && ($childNode->hasAttribute("display") == true)) {
+                            echo "<h1>IN THE IF STATEMENT</h1>";
+                            $displayAtrb = $childNode->getAttribute('display');
+                            if ($displayAtrb != '__false') {//TODO: this should move to config file
+                                print '<li>';
+                                print $displayAtrb; //we want to display it
+                            }
+                        }
+
+                        else {
+                            echo "in the else again!";
                         }
 
                         //removeWhitespace($childNode);
@@ -47,14 +75,14 @@
                         }
 
                         else {//children don't have children
-                            echo '00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000';
                             print '</li>';
                         }
                     }
                     print '</ul>';
 
                 }
-                else if($node->nodeType == 1) { //node has no children
+                else /*if($node->nodeType == 3) */{ //node has no children
+                    echo "no-children elseif";
                     if($node->getAttribute('display') != '__false') {
                         print '<span contenteditable = "true">';
                         print $node->textContent;
@@ -65,12 +93,27 @@
             }
 
             function removeWhitespace(&$node) {
-                $size = $node->childNodes->length;
-                for ($i = 0; $i < $size; $i++) {
-                    if($node->childNodes[$i]->nodeType == 3 || $node->childNodes[$i]->nodeType == 8) {
-                        $node->removeChild($node->childNodes[$i]);
+                if ($node->hasChildNodes()) {
+                    $size = $node->childNodes->length;
+                    for ($i = 0; $i < $size; $i++) {
+                        if(($node->childNodes[$i]->nodeType == 3) || ($node->childNodes[$i]->nodeType == 8)) {
+                            $node->removeChild($node->childNodes[$i]);
+                        }
                     }
                 }
+                return;
+            }
+
+            function removeComments(&$node) {
+                if ($node->hasChildNodes()) {
+                    $size = $node->childNodes->length;
+                    for ($i = 0; $i < $size; $i++) {
+                        if($node->childNodes[$i]->nodeType == 8) {
+                            $node->removeChild($node->childNodes[$i]);
+                        }
+                    }
+                }
+                return;
             }
 
         ?>

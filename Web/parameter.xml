@@ -1,39 +1,39 @@
 <?xml version="1.0" standalone='yes'?>
 <parameterFile>
     <fileUpdate display="__false"> <!-- Indicates if the file has been updated since the last time it was read by HIMP -->
-        <field display="__editable">False</field>
+        False
     </fileUpdate>
     <programParameters display="Program Parameters">
         <!--This will have the information about the different parameters of the program-->
-        <field display="__editable">Program Parameters</field>
+        <field class="__editable">Program Parameters</field>
     </programParameters>
     <installedModules display="Installed Modules">
         <!--This will have the information about the different modules installed on the system-->
         <crowdsourcingModule id="crowd1" display="Crowdsourcing Module"> <!--each module will have an id, just in case there are multiple modules of the same type installed-->
             <configuration display="Configuration">
                 <!--This will have the information about the configuration of the module-->
-                <field display="__editable">Configuration Info</field>
+                <field class="__editable">Configuration Info</field>
             </configuration>
             <processingRules display="Processing Rules">
                 <!--This will have the special processing rules described by the user in the web interface-->
-                <field display="__editable">Rules for Processing</field>
+                <field class="__editable">Rules for Processing</field>
             </processingRules>
         </crowdsourcingModule>
         <wifiModule id="wifi1" display="Wi-Fi Module"> <!--each module will have an id, just in case there are multiple modules of the same type installed-->
             <configuration display="Configuration">
                 <!--This will have the information about the configuration of the module-->
-                <field display="__editable">Configuration Info</field>
+                <field class="__editable">Configuration Info</field>
             </configuration>
             <processingRules display="Processing Rules">
                 <!--This will have the special processing rules described by the user in the web interface-->
-                <field display="__editable">Rules for Processing</field>
+                <field class="__editable">Rules for Processing</field>
             </processingRules>
         </wifiModule>
     </installedModules>
     <bacnetInfo display="BacNet Information">
         <!--This will have information about the BacNet connection-->
         <connectionType display="Connection Type"> <!-- specifies which version of BacNet is used -->
-            <field display="__editable">Ethernet <!-- or RS-485 --></field>
+            <field class="__editable">Ethernet <!-- or RS-485 --></field>
         </connectionType>
     </bacnetInfo>
 </parameterFile>

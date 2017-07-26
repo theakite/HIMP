@@ -1,7 +1,7 @@
 <?xml version="1.0" standalone='yes'?>
-<parameterFile> Thing
+<parameterFile>
 
-    <fileUpdate display="__false"> <!-- Indicates if the file has been updated since the last time it was read by HIMP -->
+    <fileUpdate display="test"> <!-- Indicates if the file has been updated since the last time it was read by HIMP -->
         False
     </fileUpdate>
 
