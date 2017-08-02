@@ -1,0 +1,8 @@
+Slides for this week:
+    * .so libraries for modularity
+    * ajax for web interaction
+        * discuss the 'contenteditable' effort
+
+http://www.yolinux.com/TUTORIALS/LibraryArchives-StaticAndDynamic.html
+
+https://developer.mozilla.org/en-US/docs/AJAX/Getting_Started

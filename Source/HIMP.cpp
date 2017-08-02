@@ -11,12 +11,14 @@ int main() {
 
     ConfigFile config = ConfigFile("./HIMP.config");
 
+    ofstream logFile("logFile.txt");
+
     file<> xmlFile(config.getXmlPath().c_str());//OPTI: maybe start as a cstring instead of having to convert to it?
-    clog << "XML Loaded" << endl;
+    logFile << "XML Loaded" << endl;
 
     xml_document<> doc;
     doc.parse<0>(xmlFile.data());
-    clog << "XML Parsed" << endl;
+    logFile << "XML Parsed" << endl;
 
     xml_node<> *topNode=doc.first_node(0);
     int topChildrenCount = count_children(topNode);
@@ -24,11 +26,11 @@ int main() {
     //TODO: have something for version checking ** handle in config file
     
     if (!strcmp(topNode->name(), config.getTopNodeTitle().c_str())) { //OPTI: cstring conversion can't be the best way to do this
-        clog << "Top Node Loaded at " << topNode << " and has " << topChildrenCount << " children" << endl;
+        logFile << "Top Node Loaded at " << topNode << " and has " << topChildrenCount << " children" << endl;
     }
 
     else {
-        clog << "Unexpected top node: " << topNode->name() <<  endl;
+        logFile << "Unexpected top node: " << topNode->name() <<  endl;
         cerr << "Unexpected top node: " << topNode->name() <<  endl;
 
         return 0; //TODO: handle this quit more gracefully

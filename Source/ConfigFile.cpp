@@ -9,6 +9,7 @@ namespace Configuration {
     // Constructor that populates properties based on the config file passed as input
     ConfigFile::ConfigFile(string fileName) {
         fstream infile(fileName);
+        ofstream logFile("configLog.txt");
 
         string temp_versionNumber;
         getline(infile, temp_versionNumber);
@@ -20,19 +21,19 @@ namespace Configuration {
         getline(infile, temp_xmlPath);
         lineEnd = temp_xmlPath.length();
         this->xmlPath = temp_xmlPath.substr(10, lineEnd);
-        clog << "Path for the XML file is: " << this->xmlPath << endl;
+        logFile << "Path for the XML file is: " << this->xmlPath << endl;
 
         string temp_noDispText;
         getline(infile, temp_noDispText);
         lineEnd = temp_noDispText.length();
         this->noDisplayText = temp_noDispText.substr(17, lineEnd);
-        clog << "The no-display keyword is: " << this->noDisplayText << endl;
+        logFile << "The no-display keyword is: " << this->noDisplayText << endl;
 
         string temp_getTopNode;
         getline(infile, temp_getTopNode);
         lineEnd = temp_getTopNode.length();
         this->topNodeTitle = temp_getTopNode.substr(25, lineEnd);
-        clog << "The top node title is: " << this->topNodeTitle << endl;
+        logFile << "The top node title is: " << this->topNodeTitle << endl;
     }
 
     config_version ConfigFile::getVersionNumber() {
