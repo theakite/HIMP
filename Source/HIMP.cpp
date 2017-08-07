@@ -37,6 +37,9 @@ int main() {
     }
 
     xml_node<> *topChildren[topChildrenCount];
+    xml_node<> *modulesTop;
+    xml_node<> *modulesAll[10];
+
     topChildren[0] = topNode->first_node(0);
     for (int i = 1; i < topChildrenCount; i++) {
         topChildren[i] = topChildren[i-1]->next_sibling(0);
@@ -44,6 +47,13 @@ int main() {
 
     for (int i = 0; i < topChildrenCount; i++) {
         cout << "Child " << i << " is " << topChildren[i]->name() << endl;
+    }
+
+    modulesTop = topNode->first_node(config.getModuleTop().c_str());
+    modulesAll[0] = modulesTop.first_node(0);
+    for (int i = 1; i < config.getNumModules(); i++) {
+        //have a check based on info from config file
+        modulesAll[i] = modules[i-1].next_sibling(0);
     }
 
     return 0;

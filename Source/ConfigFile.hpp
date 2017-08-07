@@ -11,6 +11,11 @@ namespace Configuration {
         v_0_1
     };
 
+    struct installedModule {
+        string node;
+        string id;
+    };
+
     class ConfigFile {
 
         private: 
@@ -18,7 +23,10 @@ namespace Configuration {
             config_version versionNumber; //version of the config file
             string xmlPath; //currently test.xml
             string noDisplayText; //currently __false
-            string topNodeTitle;
+            string topNodeTitle; //currently paramaterFile
+            int numModules;
+            installedModule moduleList[10];
+            string moduleTop;
 
         public:
 
@@ -27,7 +35,8 @@ namespace Configuration {
             string getXmlPath();
             string getNoDisplayText();
             string getTopNodeTitle();
-
+            int getNumModules();
+            string getModuleTop();
     };
 }
 

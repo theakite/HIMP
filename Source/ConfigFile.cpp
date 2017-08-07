@@ -34,6 +34,39 @@ namespace Configuration {
         lineEnd = temp_getTopNode.length();
         this->topNodeTitle = temp_getTopNode.substr(25, lineEnd);
         logFile << "The top node title is: " << this->topNodeTitle << endl;
+
+        string temp_getModuleTop;
+        getline(infile, temp_getModuleTop);
+        lineEnd = temp_getModuleTop.length();
+        this->moduleTop = temp_getModuleTop.substr(18, lineEnd);
+        logFile << "The top module node is: " << this->moduleTop << endl;
+
+        string temp_getNumModules;
+        getline(infile, temp_getNumModules);
+        lineEnd = temp_getNumModules.length();
+        temp_getNumModules = temp_getNumModules.substr(19, lineEnd);
+        if (atoi(temp_getNumModules.c_str()) < 10 && atoi(temp_getNumModules.c_str()) > 0) {
+            this->numModules = atoi(temp_getNumModules.c_str());
+            cout << atoi(temp_getNumModules.c_str()) << endl;
+            logFile << "The number of modules is: " << to_string(this->numModules) << endl;
+        }
+        else {
+            logFile << "Max module number is 9." << endl;
+            cout << "Error: number of modules is out of bounds (must be between 1 and 9)" << endl;
+        }
+
+        string tempNodeName;
+        string tempId;
+        for (int i = 0; i < this->numModules; i++) {
+            getline(infile, tempNodeName);
+            tempNodeName = tempNodeName.substr(8, tempNodeName.length());
+            getline(infile, tempId);
+            tempId = tempId.substr(4, tempId.length());
+            this->moduleList[i].node = tempNodeName;
+            this->moduleList[i].id = tempId;
+            cout << "Node name " << i+1 << " is " << this->moduleList[i].node << endl;
+            cout << "Node id " << i+1 << " is " << this->moduleList[i].id << endl;
+        }
     }
 
     config_version ConfigFile::getVersionNumber() {
@@ -50,6 +83,14 @@ namespace Configuration {
 
     string ConfigFile::getTopNodeTitle() {
         return this-> topNodeTitle;
+    }
+
+    int ConfigFile::getNumModules() {
+        return this-> numModules;
+    }
+
+    string ConfigFile::getModuleTop() {
+        return this-> moduleTop;
     }
 
     /*int main() { // for testing

@@ -1,3 +1,5 @@
 Path for the XML file is: ./test.xml
 The no-display keyword is: __false
 The top node title is: parameterFile
+The top module node is: installedModules
+The number of modules is: 2
