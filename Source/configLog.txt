@@ -1,4 +1,4 @@
-Path for the XML file is: ./test.xml
+Path for the XML file is: ./parameter.xml
 The no-display keyword is: __false
 The top node title is: parameterFile
 The top module node is: installedModules

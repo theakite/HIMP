@@ -43,18 +43,28 @@
                             $displayAtrb = $childNode->getAttribute('display');
                             if ($displayAtrb != '__false') {//TODO: this should move to config file
                                 print '<li>';
-                                    print $displayAtrb; //we want to display it
+                                if (!$childNode->hasChildNodes()) {
+                                    print '<a href = "./ruledisplay.php?room=';
+                                    print $childNode->getAttribute('room');
+                                    print '&hotCount=';
+                                    print $childNode->getAttribute('hotCount');
+                                    print '&coldCount=';
+                                    print $childNode->getAttribute('coldCount');
+                                    print '">';
+                                }
+                                print $displayAtrb; //we want to display it
                                 if ($childNode->hasChildNodes()) {
                                     print '<ul>';
                                     assembleChildren($childNode);
                                     print "</ul>";
                                 }
                                 else {
+                                    print "</a>";
                                     if ($node->getAttribute('class') == "__editable") {
                                         print '<li><span contenteditable = "true">';
                                     }
                                     print $node->textContent;
-                                    print $childNode->nodeType;
+                                    //print $childNode->nodeType;
                                     if ($node->getAttribute('class') == "__editable") {
                                         print '</span></li>';
                                     }

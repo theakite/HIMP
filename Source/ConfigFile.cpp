@@ -47,7 +47,7 @@ namespace Configuration {
         temp_getNumModules = temp_getNumModules.substr(19, lineEnd);
         if (atoi(temp_getNumModules.c_str()) < 10 && atoi(temp_getNumModules.c_str()) > 0) {
             this->numModules = atoi(temp_getNumModules.c_str());
-            cout << atoi(temp_getNumModules.c_str()) << endl;
+            //cout << atoi(temp_getNumModules.c_str()) << endl;
             logFile << "The number of modules is: " << to_string(this->numModules) << endl;
         }
         else {
@@ -64,8 +64,8 @@ namespace Configuration {
             tempId = tempId.substr(4, tempId.length());
             this->moduleList[i].node = tempNodeName;
             this->moduleList[i].id = tempId;
-            cout << "Node name " << i+1 << " is " << this->moduleList[i].node << endl;
-            cout << "Node id " << i+1 << " is " << this->moduleList[i].id << endl;
+            //cout << "Node name " << i+1 << " is " << this->moduleList[i].node << endl;
+            //cout << "Node id " << i+1 << " is " << this->moduleList[i].id << endl;
         }
     }
 
