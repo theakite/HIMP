@@ -16,6 +16,13 @@ int main(int argc, char *argv[]) {
     int counter217 = 0;
     int max101, min101, max217, min217;
     while(1) {
+
+        cout << "Enter room number followed by input" << endl;
+        string room;
+        cin >> room;
+        string input;
+        cin >> input;
+
         file<> xmlFile(config.getXmlPath().c_str());//OPTI: maybe start as a cstring instead of having to convert to it?
         logFile << "XML Loaded" << endl;
 
@@ -83,11 +90,7 @@ int main(int argc, char *argv[]) {
 
 
         
-        cout << "Enter room number followed by input" << endl;
-        string room;
-        cin >> room;
-        string input;
-        cin >> input;
+        
 
         //cout << "Room is " << room << " and input is " << input << endl;
         if (atoi(room.c_str()) == 101) {
